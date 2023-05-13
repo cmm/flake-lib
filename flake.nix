@@ -31,7 +31,7 @@
             buildCommand = ''
               shopt -s nullglob
               mkdir -p $out/share/info
-              for pkg in ${concatStringsSep " " (map toPath infoOuts)}; do
+              for pkg in ${concatStringsSep " " infoPathsPre}; do
                 [[ -s $pks/share/info/dir ]] && continue || :
                 for file in $pkg/share/info/*.info{,.gz}; do
                    ${pkgs.texinfo}/bin/install-info $file $out/share/info/dir
